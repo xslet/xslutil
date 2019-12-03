@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xml" href="unit.test.xsl"?>
+
+<unit-test title="ut:trim">
+
+  <assert-equal name="ut:trim_start">
+   <string></string>
+   <expect></expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim_start">
+   <string>ABC</string>
+   <expect>ABC</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim_start">
+   <string>  ABC  </string>
+   <expect>ABC  </expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim_start">
+   <string> &#10; ABC &#10; </string>
+   <expect>ABC &#10; </expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim_start">
+   <string>##ABC###</string>
+   <target>#</target>
+   <expect>ABC###</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim_start">
+   <string>{!!!}{!!!}ABC{!!!}{!!!}</string>
+   <target>{!!!}</target>
+   <expect>ABC{!!!}{!!!}</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim_end">
+   <string></string>
+   <expect></expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim_end">
+   <string>ABC</string>
+   <expect>ABC</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim_end">
+   <string>  ABC   </string>
+   <expect>  ABC</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim_end">
+   <string> &#10; ABC &#10;  </string>
+   <expect> &#10; ABC</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim_end">
+   <string>###ABC#####</string>
+   <target>#</target>
+   <expect>###ABC</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim_end">
+   <string>{!!!}{!!!}{!!!}ABC{!!!}{!!!}{!!!}{!!!}{!!!}</string>
+   <target>{!!!}</target>
+   <expect>{!!!}{!!!}{!!!}ABC</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim">
+   <string></string>
+   <expect></expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim">
+   <string>ABC</string>
+   <expect>ABC</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim">
+   <string>  ABC   </string>
+   <expect>ABC</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim">
+   <string> &#10; ABC &#10;  </string>
+   <expect>ABC</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim">
+   <string>###ABC#####</string>
+   <target>#</target>
+   <expect>ABC</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:trim">
+   <string>{!!!}{!!!}{!!!}ABC{!!!}{!!!}{!!!}{!!!}{!!!}</string>
+   <target>{!!!}</target>
+   <expect>ABC</expect>
+  </assert-equal>
+
+</unit-test>

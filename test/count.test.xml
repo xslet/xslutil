@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xml" href="unit.test.xsl"?>
+
+<unit-test title="ut:count">
+
+  <assert-equal name="ut:count">
+   <string></string>
+   <target></target>
+   <expect>0</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:count">
+   <string>ABAABCA</string>
+   <target></target>
+   <expect>0</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:count">
+   <string></string>
+   <target>A</target>
+   <expect>0</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:count">
+   <string>ABAABCA</string>
+   <target>A</target>
+   <expect>4</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:count">
+   <string>ABAABCA</string>
+   <target>AB</target>
+   <expect>2</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:count">
+   <string>ABAABCA</string>
+   <target>ABC</target>
+   <expect>1</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:count">
+   <string>ABAABCA</string>
+   <target>ABAABCA</target>
+   <expect>1</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:count">
+   <string>ABAABCA</string>
+   <target>ABAABCB</target>
+   <expect>0</expect>
+  </assert-equal>
+
+</unit-test>

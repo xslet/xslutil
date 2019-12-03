@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xml" href="unit.test.xsl"?>
+
+<unit-test title="ut:get_namespace_uri"
+ xmlns:ut="https://github.com/xslet/2020/xslbook/util"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <assert-equal name="ut:get_namespace_uri">
+   <prefix></prefix>
+   <expect></expect>
+  </assert-equal>
+
+  <assert-equal name="ut:get_namespace_uri">
+   <prefix>ut</prefix>
+   <expect>https://github.com/xslet/2020/xslbook/util</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:get_namespace_uri">
+   <prefix>xsl</prefix>
+   <expect>http://www.w3.org/1999/XSL/Transform</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:get_namespace_uri">
+   <prefix>xxx</prefix>
+   <expect>&#x86;-&#x87;</expect>
+  </assert-equal>
+
+  <ut:aaa/>
+  <xsl:bbb/>
+</unit-test>

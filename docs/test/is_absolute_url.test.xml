@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xml" href="unit.test.xsl"?>
+
+<unit-test title="ut:is_absolute_url">
+
+  <assert-equal name="ut:is_absolute_url">
+   <url></url>
+   <expect>true</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:is_absolute_url">
+   <url>https://github.com/xslet/xslbook</url>
+   <expect>true</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:is_absolute_url">
+   <url>file:///Users/aaa/bbb/ccc</url>
+   <expect>true</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:is_absolute_url">
+   <url>file:///C:/Users/aaa/bbb/ccc</url>
+   <expect>true</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:is_absolute_url">
+   <url>/Users/aaa/bbb/ccc</url>
+   <expect>true</expect>
+  </assert-equal>
+
+  <assert-equal name="ut:is_absolute_url">
+   <url>aaa/bbb/ccc</url>
+   <expect></expect>
+  </assert-equal>
+
+  <assert-equal name="ut:is_absolute_url">
+   <url>../aaa/bbb/ccc</url>
+   <expect></expect>
+  </assert-equal>
+
+  <assert-equal name="ut:is_absolute_url">
+   <url>./aaa/bbb/ccc</url>
+   <expect></expect>
+  </assert-equal>
+
+</unit-test>

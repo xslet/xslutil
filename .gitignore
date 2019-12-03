@@ -1,0 +1,10 @@
+build_aux/downloads
+build_aux/lib
+build_aux/bin
+
+.DS_Store
+*.swp
+*.swo
+
+*.log
+npm-debug-.log*

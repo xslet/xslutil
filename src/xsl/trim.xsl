@@ -4,8 +4,13 @@
  xmlns:ut="https://github.com/xslet/2020/xslutil"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+ <!--**
+   Trims target substrings in start of string.
+ -->
  <xsl:template name="ut:trim_start">
+  <!--** A string to be processed. -->
   <xsl:param name="string"/>
+  <!--** A substring to be trimmed. -->
   <xsl:param name="target"/>
   <xsl:variable name="_lenS" select="string-length($string)"/>
   <xsl:variable name="_lenT" select="string-length($target)"/>
@@ -40,8 +45,13 @@
   </xsl:choose>
  </xsl:template>
 
+ <!--**
+   Trims target substrings in end of string.
+ -->
  <xsl:template name="ut:trim_end">
+  <!--** A string to be processed. -->
   <xsl:param name="string"/>
+  <!--** A substring to be trimmed. -->
   <xsl:param name="target"/>
   <xsl:variable name="_lenS" select="string-length($string)"/>
   <xsl:variable name="_lenT" select="string-length($target)"/>
@@ -78,8 +88,13 @@
   </xsl:choose>
  </xsl:template>
 
+ <!--**
+   Trims target substrings in both side of string.
+ -->
  <xsl:template name="ut:trim">
+  <!--** A string to be processed. -->
   <xsl:param name="string"/>
+  <!--** A substring to be trimmed. -->
   <xsl:param name="target"/>
   <xsl:variable name="_str">
    <xsl:call-template name="ut:trim_start">

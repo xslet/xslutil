@@ -4,7 +4,11 @@
  xmlns:ut="https://github.com/xslet/2020/xslutil"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+ <!--**
+   Returns the XSL URL from the processing instruction or the specified pi.
+ -->
  <xsl:template name="ut:get_xsl_url">
+  <!--** A processing instruction. (Optional) -->
   <xsl:param name="pi" select="/processing-instruction('xml-stylesheet')"/>
   <xsl:variable name="QUOT">"</xsl:variable>
   <xsl:variable name="APOS">'</xsl:variable>

@@ -4,7 +4,13 @@
  xmlns:ut="https://github.com/xslet/2020/xslutil"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+ <!--**
+   Returns the namespace URI of prefix. This function returns a URI string, or $ut:unknown_namespace.
+
+   NOTE: Firefox does not support the XPath's namespace axis: namespace::*. So, on Firefox, this function finds an element using the target namespace then applys namespace-uri() to it. If such an element is not found, this function returns $ut:unknown_namespace.
+ -->
  <xsl:template name="ut:get_namespace_uri">
+  <!--** A prefix of a namespace. -->
   <xsl:param name="prefix"/>
   <xsl:variable name="_ns" select="namespace::*[name() = $prefix]"/>
   <xsl:choose>

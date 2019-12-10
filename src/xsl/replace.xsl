@@ -4,9 +4,15 @@
  xmlns:ut="https://github.com/xslet/2020/xslutil"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+ <!--**
+   Replaces all target substrings to replacement in a string.
+ -->
  <xsl:template name="ut:replace">
+  <!--** A string to be processed. -->
   <xsl:param name="string"/>
+  <!--** A replaced substring. -->
   <xsl:param name="target"/>
+  <!--** A substring to be substituted for each match. -->
   <xsl:param name="replacement"/>
   <xsl:variable name="_lenT" select="string-length($target)"/>
   <xsl:choose>

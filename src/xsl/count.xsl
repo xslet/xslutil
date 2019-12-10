@@ -4,8 +4,13 @@
  xmlns:ut="https://github.com/xslet/2020/xslutil"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+ <!--**
+   Counts a target substring in a string. This function returns a positive number or zero.
+ -->
  <xsl:template name="ut:count">
+  <!--** A string to be checked. -->
   <xsl:param name="string"/>
+  <!--** A target substring to be counted. --> 
   <xsl:param name="target"/>
   <xsl:choose>
    <xsl:when test="string-length($string) = 0">0</xsl:when>

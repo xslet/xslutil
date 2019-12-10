@@ -37,6 +37,7 @@
    <fileset dir="${dir.dist}" includes="**/*"/>
    <fileset dir="${dir.deploy}" includes="**/*"/>
    <fileset dir="${dir.docs}/test" includes="**/*"/>
+   <fileset dir="${dir.docs}/api" includes="**/*"/>
   </delete>
   <exec executable="find" os="Mac OS X">
    <arg line=". -name .DS_Store -delete"/>
@@ -119,6 +120,7 @@
   <mkdir dir="${dir.dist}"/>
   <mkdir dir="${dir.docs}"/>
   <mkdir dir="${dir.docs}/test"/>
+  <mkdir dir="${dir.docs}/api"/>
   <mkdir dir="${dir.test}"/>
   <mkdir dir="${dir.build.dl}"/>
   <mkdir dir="${dir.build.lib}"/>
@@ -160,6 +162,10 @@
  </target>
 
  <target name="deploy">
+  <copy todir="${dir.docs}/api/xsldoc">
+   <fileset dir="${dir.build.xsl}/xsldoc"/>
+   <fileset dir="${dir.dist}"/>
+  </copy>
   <copy todir="${dir.docs}/test">
    <fileset dir="${dir.test}"/>
   </copy>

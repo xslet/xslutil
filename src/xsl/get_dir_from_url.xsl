@@ -4,7 +4,11 @@
  xmlns:ut="https://github.com/xslet/2020/xslutil"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+ <!--**
+   Returns a parent url of url. This function returns a url string or '.'.
+ -->
  <xsl:template name="ut:get_dir_from_url">
+  <!--** An URL string. -->
   <xsl:param name="url"/>
   <xsl:choose>
    <xsl:when test="not(contains($url, '/'))">.</xsl:when>

@@ -4,8 +4,13 @@
  xmlns:ut="https://github.com/xslet/2020/xslutil"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+ <!--**
+   Tests that a string ends with a suffix substring. This function returns $ut:true (='true') or empty.
+ -->
  <xsl:template name="ut:ends_with">
+  <!--** A string to be tested. -->
   <xsl:param name="string"/>
+  <!--** A suffix substring. -->
   <xsl:param name="suffix"/>
   <xsl:variable name="_len1" select="string-length($suffix)"/>
   <xsl:choose>

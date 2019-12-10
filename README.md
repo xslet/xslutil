@@ -8,6 +8,10 @@ This program is written in XSLT 1.0.
 
 `xmlns:ut="https://github.com/xslet/2020/xslutil"`
 
+## API
+
+The API document of this program is [here](https://xslet.github.io/xslutil/api/xslutil.xml).
+
 ## List
 
 * [`ut:count`](#usage_count)

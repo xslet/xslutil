@@ -61,7 +61,7 @@ section.elements > div.element-list > div.element-item > div.element-param-list:
 section.elements > div.element-list > div.element-item > div.element-param-list > div.element-param-item {
   padding-left: 1rem;
   display: flex; }
-  section.elements > div.element-list > div.element-item > div.element-param-list > div.element-param-item > div.element-param-name {
+  section.elements > div.element-list > div.element-item > div.element-param-list > div.element-param-item > div.element-param-desc:before {
     content: '-';
     margin-left: 0.3rem; }
   section.elements > div.element-list > div.element-item > div.element-param-list > div.element-param-item > div.element-param-desc {
@@ -76,9 +76,10 @@ section.functions > div.function-list > div.function-item > div.function-param-l
 section.functions > div.function-list > div.function-item > div.function-param-list > div.function-param-item {
   padding-left: 1rem;
   display: flex; }
-  section.functions > div.function-list > div.function-item > div.function-param-list > div.function-param-item > div.function-param-name:after {
+  section.functions > div.function-list > div.function-item > div.function-param-list > div.function-param-item > div.function-param-desc:before {
     content: '-';
-    margin-left: 0.3rem; }
-  section.functions > div.function-list > div.function-item > div.function-param-list > div.function-param-item > div.function-param-desc {
     margin-left: 0.3rem;
+    margin-right: 0.3rem; }
+  section.functions > div.function-list > div.function-item > div.function-param-list > div.function-param-item > div.function-param-desc {
+    margin-left: 0rem;
     margin-bottom: 0rem; }

@@ -164,7 +164,6 @@
  <target name="deploy">
   <copy todir="${dir.docs}/api/xsldoc">
    <fileset dir="${dir.build.xsl}/xsldoc"/>
-   <fileset dir="${dir.dist}"/>
   </copy>
   <copy todir="${dir.docs}/test">
    <fileset dir="${dir.test}"/>

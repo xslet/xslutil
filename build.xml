@@ -10,6 +10,7 @@
  <property name="app.name" value="${ant.project.name}"/>
  <property name="dep.saxon.version" value="9-9-1-5J"/>
  <property name="dep.tomcat.version" value="9.0.27"/>
+ <property name="dep.xsldoc.version" value="0.1.0"/>
 
  <property name="dir.src"   location="${basedir}/src"/>
  <property name="dir.dist"  location="${basedir}/dist"/>
@@ -24,6 +25,8 @@
  <property name="dir.build.bin" location="${dir.build}/bin"/>
  <property name="dir.build.xsl" location="${dir.build}/xsl"/>
 
+ <property name="pkg.xsldoc" value="xsldoc-${dep.xsldoc.version}"/>
+ <property name="dir.xsldoc" location="${dir.build.lib}/${pkg.xsldoc}"/>
  <property name="pkg.saxon" value="SaxonHE${dep.saxon.version}"/>
  <property name="dir.saxon" location="${dir.build.lib}/${pkg.saxon}"/>
  <property name="pkg.tomcat" value="apache-tomcat-${dep.tomcat.version}"/>
@@ -51,9 +54,12 @@
  </target>
 
  <target name="merge">
+  <delete>
+   <fileset dir="${dir.src.xsl}/ext" includes="**/*"/>
+  </delete>
+  <antcall target="merge-doc-xsl"/>
   <antcall target="merge-src-xsl"/>
   <antcall target="merge-test-xsl"/>
-  <antcall target="merge-doc-xsl"/>
  </target>
 
  <target name="merge-src-xsl">
@@ -123,6 +129,8 @@
 
  <target name="setup">
   <mkdir dir="${dir.src.xsl}"/>
+  <mkdir dir="${dir.src.xsl}/lib"/>
+  <mkdir dir="${dir.src.xsl}/ext"/>
   <mkdir dir="${dir.dist}"/>
   <mkdir dir="${dir.docs}"/>
   <mkdir dir="${dir.docs}/test"/>
@@ -131,9 +139,18 @@
   <mkdir dir="${dir.build.dl}"/>
   <mkdir dir="${dir.build.lib}"/>
   <mkdir dir="${dir.build.bin}"/>
+  <antcall target="get-xsldoc"/>
   <antcall target="get-saxon"/>
   <antcall target="get-tomcat"/>
   <mkdir dir="${dir.deploy}"/>
+ </target>
+
+ <target name="get-xsldoc">
+  <property name="url" value="https://github.com/xslet/xsldoc/archive/${dep.xsldoc.version}.zip"/>
+  <property name="zip" location="${dir.build.dl}/${pkg.xsldoc}.zip"/>
+  <property name="dir.unzip" location="${dir.xsldoc}/.."/>
+  <get src="${url}" dest="${zip}"/>
+  <unzip src="${zip}" dest="${dir.unzip}"/>
  </target>
 
  <target name="get-saxon">
@@ -169,7 +186,7 @@
 
  <target name="deploy">
   <copy todir="${dir.docs}/api/xsldoc">
-   <fileset dir="${dir.build.xsl}/xsldoc"/>
+   <fileset dir="${dir.xsldoc}/dist"/>
   </copy>
   <copy todir="${dir.docs}/test">
    <fileset dir="${dir.test}"/>

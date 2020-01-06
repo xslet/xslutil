@@ -1,4 +1,4 @@
-# [@xslet/xslutil](https://github.com/xslet/xslutil) ver.0.1
+# [@xslet/xslutil][repo-url] ![Version][ver-image] [![Github.io][io-image]][io-url] [![MIT License][mit-image]][mit-url]
 
 A set of utilities for XSLT programs on Web browsers.
 
@@ -10,7 +10,7 @@ This program is written in XSLT 1.0.
 
 ## API
 
-The API document of this program is [here](https://xslet.github.io/xslutil/api/xslutil.xml).
+The API document of this program is [here][api-url].
 
 ## List
 
@@ -232,9 +232,16 @@ Tests a *string* contains one of character in *forbidden*. If *forbidden* substr
 
 ## License
 
-Copyright &copy; 2019 Takayuki Sato
+Copyright &copy; 2019-2020 Takayuki Sato
 
-This program is free software under [MIT](https://opensource.org/licenses/MIT) License.
+This program is free software under [MIT][mit-url] License.
 See the file LICENSE in this distribution for more details.
 
 
+[repo-url]: https://github.com/xslet/xslutil
+[io-image]: https://img.shields.io/badge/HP-github.io-ff8888.svg
+[io-url]: https://xslet.github.io/xslutil/
+[ver-image]: https://img.shields.io/badge/version-0.1.0-blue.svg
+[mit-image]: https://img.shields.io/badge/license-MIT-green.svg
+[mit-url]: https://opensource.org/licenses/MIT
+[api-url]: https://xslet.github.io/xslutil/api/xslutil.xml

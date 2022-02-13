@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="application/xml" href="unit-test.xsl"?>
+
+<describe title="ut:replace">
+
+ <it title="should replace param:target in param:string to param:replacement">
+  <compute name="ut:replace">
+   <param name="string">ABCDEFG</param>
+   <param name="target">CDE</param>
+   <param name="replacement">XYZ</param>
+  </compute>
+  <expect>ABXYZFG</expect>
+ </it>
+
+
+ <it title="should return an empty string if param:string is empty">
+  <compute name="ut:replace">
+   <param name="string"></param>
+   <param name="target">CDE</param>
+   <param name="replacement">XYZ</param>
+  </compute>
+  <expect></expect>
+ </it>
+
+
+ <it title="should replace multiple param:target in param:string">
+  <compute name="ut:replace">
+   <param name="string">ABCABCAB</param>
+   <param name="target">BC</param>
+   <param name="replacement">#</param>
+  </compute>
+  <expect>A#A#AB</expect>
+ </it>
+
+
+ <it title="should replace param:target at the head of param:string">
+  <compute name="ut:replace">
+   <param name="string">ABCABC</param>
+   <param name="target">AB</param>
+   <param name="replacement">#</param>
+  </compute>
+  <expect>#C#C</expect>
+ </it>
+
+
+ <it title="should replace param:target at the last of param:string">
+  <compute name="ut:replace">
+   <param name="string">ABCABC</param>
+   <param name="target">BC</param>
+   <param name="replacement">#</param>
+  </compute>
+  <expect>A#A#</expect>
+ </it>
+
+
+ <it title="should not replace param:target in replaced string">
+  <compute name="ut:replace">
+   <param name="string">ABB</param>
+   <param name="target">AB</param>
+   <param name="replacement">BA</param>
+  </compute>
+  <expect>BAB</expect>
+ </it>
+
+
+ <it title="should replace nothing if param:string does not contains param:target">
+  <compute name="ut:replace">
+   <param name="string">ABCDEFG</param>
+   <param name="target">XYZ</param>
+   <param name="replacement">#</param>
+  </compute>
+  <expect>ABCDEFG</expect>
+ </it>
+
+</describe>

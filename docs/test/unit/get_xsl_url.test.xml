@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="application/xml" href="unit-test.xsl"?>
+
+<describe title="ut:get_xsl_url">
+
+ <it title="should return a path of a xsl file in processing-instruction">
+  <compute name="ut:get_xsl_url">
+   <param name="pi">&lt;?xml-stylesheet type="text/xsl" href="path/to/style.xsl"?&gt;</param>
+  </compute>
+  <expect>path/to/style.xsl</expect>
+ </it>
+
+
+ <it title="should return an url of a xsl file in processing-instruction">
+  <compute name="ut:get_xsl_url">
+   <param name="pi">&lt;?xml-stylesheet type="text/xsl" href="https://domain/path/to/style.xsl"?&gt;</param>
+  </compute>
+  <expect>https://domain/path/to/style.xsl</expect>
+ </it>
+
+
+ <it title="should return an empty string if processing-instruction is empty">
+  <compute name="ut:get_xsl_url">
+   <param name="pi"></param>
+  </compute>
+  <expect></expect>
+ </it>
+
+
+ <it title="should return an url of a xsl file even if processing-instruction uses single quotatoins">
+  <compute name="ut:get_xsl_url">
+   <param name="pi">&lt;?xml-stylesheet type='text/xsl' href='path/to/style.xsl'?&gt;</param>
+  </compute>
+  <expect>path/to/style.xsl</expect>
+ </it>
+
+
+ <it title="should return an url of a xsl file even if processing-instruction includes spaces">
+  <compute name="ut:get_xsl_url">
+   <param name="pi">&lt;?xml-stylesheet type='text/xsl' href  =   "path/to/style.xsl"   ?&gt;</param>
+  </compute>
+  <expect>path/to/style.xsl</expect>
+ </it>
+
+</describe>

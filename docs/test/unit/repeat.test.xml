@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="application/xml" href="unit-test.xsl"?>
+
+<describe title="ut:repeat">
+
+ <it title="should return an empty string if param:string and param:count is empty">
+  <compute name="ut:repeat">
+   <param name="string"></param>
+   <param name="count"></param>
+  </compute>
+  <expect></expect>
+ </it>
+
+
+ <it title="should return an empty string if param:count is 0">
+  <compute name="ut:repeat">
+   <param name="string">ABC</param>
+   <param name="count">0</param>
+  </compute>
+  <expect></expect>
+ </it>
+
+
+ <it title="should return one param:string string if parma:count is 1">
+  <compute name="ut:repeat">
+   <param name="string">ABC</param>
+   <param name="count">1</param>
+  </compute>
+  <expect>ABC</expect>
+ </it>
+
+
+ <it title="should return two param:string string if parma:count is 2">
+  <compute name="ut:repeat">
+   <param name="string">ABC</param>
+   <param name="count">2</param>
+  </compute>
+  <expect>ABCABC</expect>
+ </it>
+
+
+ <it title="should return five param:string string if parma:count is 5">
+  <compute name="ut:repeat">
+   <param name="string">ABC</param>
+   <param name="count">5</param>
+  </compute>
+  <expect>ABCABCABCABCABC</expect>
+ </it>
+
+</describe>

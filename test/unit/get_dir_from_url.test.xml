@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="application/xml" href="unit-test.xsl"?>
+
+<describe title="ut:get_dir_from_url">
+
+  <it title="should get directory in path">
+   <compute name="ut:get_dir_from_url">
+    <param name="url">dir/style.css</param>
+   </compute>
+   <expect>dir</expect>
+  </it>
+
+
+  <it title="should get directory in url">
+   <compute name="ut:get_dir_from_url">
+    <param name="url">http://domain/path/to/style.css</param>
+   </compute>
+   <expect>http://domain/path/to</expect>
+  </it>
+
+
+  <it title="should return '.' if param:url is only file name">
+   <compute name="ut:get_dir_from_url">
+    <param name="url">style.css</param>
+   </compute>
+   <expect>.</expect>
+  </it>
+
+
+  <it title="should return '.' if param:url is './' + file name">
+   <compute name="ut:get_dir_from_url">
+    <param name="url">./style.css</param>
+   </compute>
+   <expect>.</expect>
+  </it>
+
+
+  <it title="should return '.' if param:url is empty">
+   <compute name="ut:get_dir_from_url">
+    <param name="url"></param>
+   </compute>
+   <expect>.</expect>
+  </it>
+
+
+  <it title="should return '.' if param:url starts with 'file:///'">
+   <compute name="ut:get_dir_from_url">
+    <param name="url">file:///path/to/style.css</param>
+   </compute>
+   <expect>file:///path/to</expect>
+  </it>
+
+</describe>

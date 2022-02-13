@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="application/xml" href="unit-test.xsl"?>
+
+<describe title="ut:trim_start">
+
+ <it title="should trim spaces in left side of param:string">
+  <compute name="ut:trim_start">
+   <param name="string">  ABC   </param>
+  </compute>
+  <expect>ABC   </expect>
+ </it>
+
+
+ <it title="should also trim EOLs in param:string">
+  <compute name="ut:trim_start">
+   <param name="string"> &#10; ABC &#10;  </param>
+  </compute>
+  <expect>ABC &#10;  </expect>
+ </it>
+
+
+ <it title="should return param:string as it is if no space in left side">
+  <compute name="ut:trim_start">
+   <param name="string">ABC</param>
+  </compute>
+  <expect>ABC</expect>
+ </it>
+
+
+ <it title="should return an empty string if param:string is empty">
+  <compute name="ut:trim_start">
+   <param name="string"></param>
+  </compute>
+  <expect></expect>
+ </it>
+
+
+ <it title="should trim param:target (1 char) in left side of param:string">
+  <compute name="ut:trim_start">
+   <param name="string">####  ABC ###</param>
+   <param name="target">#</param>
+  </compute>
+  <expect>  ABC ###</expect>
+ </it>
+
+
+ <it title="should trim param:target (multiple chars) in left side of param:string">
+  <compute name="ut:trim_start">
+   <param name="string">{!!!}{!!!} {!!!}ABC{!!!} {!!!}{!!!}{!!!}{!!!}</param>
+   <param name="target">{!!!}</param>
+  </compute>
+  <expect> {!!!}ABC{!!!} {!!!}{!!!}{!!!}{!!!}</expect>
+ </it>
+
+</describe>

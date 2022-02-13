@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="application/xml" href="unit-test.xsl"?>
+
+<describe title="ut:count">
+
+  <it title="should count param:target (1 char) in param:string">
+   <compute name="ut:count">
+    <param name="string">ABAABCA</param>
+    <param name="target">A</param>
+   </compute>
+   <expect>4</expect>
+  </it>
+
+  <it title="should count param:target (2 chars) in param:string">
+   <compute name="ut:count">
+    <param name="string">ABAABCA</param>
+    <param name="target">AB</param>
+   </compute>
+   <expect>2</expect>
+  </it>
+
+  <it title="should count param:target (3 chars) in param:string">
+   <compute name="ut:count">
+    <param name="string">ABAABCA</param>
+    <param name="target">ABC</param>
+   </compute>
+   <expect>1</expect>
+  </it>
+
+  <it title="should return 0 if both param:string and param:target are empty">
+   <compute name="ut:count">
+    <param name="string"></param>
+    <param name="target"></param>
+   </compute>
+   <expect>0</expect>
+  </it>
+
+  <it title="should return 0 if only param:target is empty">
+   <compute name="ut:count">
+    <string>ABAABCA</string>
+    <target></target>
+   </compute>
+   <expect>0</expect>
+  </it>
+
+  <it title="should return 0 if only param:string is empty">
+   <compute name="ut:count">
+    <string></string>
+    <target>A</target>
+   </compute>
+   <expect>0</expect>
+  </it>
+
+  <it title="should return 1 if a param:target equals to param:string">
+   <compute name="ut:count">
+    <param name="string">ABAABCA</param>
+    <param name="target">ABAABCA</param>
+   </compute>
+   <expect>1</expect>
+  </it>
+
+  <it title="should return 0 if a param:target does not exist in param:string">
+   <compute name="ut:count">
+    <param name="string">ABAABCA</param>
+    <param name="target">BB</param>
+   </compute>
+   <expect>0</expect>
+  </it>
+
+</describe>

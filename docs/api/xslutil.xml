@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="application/xml" href="xsldoc/xsldoc.xsl"?><!-- xslutil.xsl v0.1. Copyright (C) xslet@github. MIT License --><!--** xslutil.xsl ver0.1 - API Document
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="application/xml" href="xsldoc/xsldoc.xsl"?><!-- xslutil.xsl 0.1 Copyright (C) 2019-2022 xslet project MIT License --><!--** xslutil.xsl ver0.1 - API Document
 **
-  xslutil is a XSLT liblet which is a set of utilities for XSLT programs on Web browsers.
-
-  This liblet provides functions (named-templates) for string operations.
+  xslutil is a XSLT library which is a set of utilities for XSLT programs on Web browsers.
+  This library provides named-templates for string operations.
 
   This program is written in XSLT 1.0.
 
-** Copyright (C) xslet@github
+** Copyright (C) 2019-2022 xslet project
 ** MIT License
 --><xsl:stylesheet xmlns:ut="https://github.com/xslet/2020/xslutil" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"><!--** An apostrophe. --><xsl:param name="ut:apos">'</xsl:param><!--** A double quotation. --><xsl:param name="ut:quot">"</xsl:param><!--** A `true` string. --><xsl:param name="ut:true" select="string(true())"/><!--** The string of which meaning is unknown namespace. --><xsl:param name="ut:unknown_namespace">&#x86;-&#x87;</xsl:param><!--**
    Counts a target substring in a string. This function returns a positive number or zero.

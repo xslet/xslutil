@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="application/xml" href="unit-test.xsl"?>
+
+<describe title="ut:get_namespace_uri"
+ xmlns:aa="https://aaa/bbb/ccc"
+ xmlns:ut="https://github.com/xslet/2020/xslbook/util"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+ <!-- for Firefox -->
+ <aa:use-namespace/>
+ <ut:use-namespace/>
+ <xsl:use-namespace/>
+
+
+ <it title="should get a namespace url of prefix 'aa'">
+  <compute name="ut:get_namespace_uri">
+   <param name="prefix">aa</param>
+  </compute>
+  <expect>https://aaa/bbb/ccc</expect>
+ </it>
+
+
+ <it title="should get a namespace url of prefix 'ut'">
+  <compute name="ut:get_namespace_uri">
+   <param name="prefix">ut</param>
+  </compute>
+  <expect>https://github.com/xslet/2020/xslbook/util</expect>
+ </it>
+
+
+ <it title="should get a namespace url of prefix 'xsl'">
+  <compute name="ut:get_namespace_uri">
+   <param name="prefix">xsl</param>
+  </compute>
+  <expect>http://www.w3.org/1999/XSL/Transform</expect>
+ </it>
+
+
+ <it title="should get an empty namespace url for unspecified empty prefix">
+  <compute name="ut:get_namespace_uri">
+   <param name="prefix"></param>
+  </compute>
+  <expect></expect>
+ </it>
+
+
+ <it title="should get an unknowun namespace url for unspecified prefix 'xxx'">
+  <compute name="ut:get_namespace_uri">
+   <param name="prefix">xxx</param>
+  </compute>
+  <expect>&#x86;-&#x87;</expect>
+ </it>
+
+</describe>

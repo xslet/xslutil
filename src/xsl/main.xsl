@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--**
-  xslutil is a XSLT liblet which is a set of utilities for XSLT programs on Web browsers.
-
-  This liblet provides functions (named-templates) for string operations.
+  xslutil is a XSLT library which is a set of utilities for XSLT programs on Web browsers.
+  This library provides named-templates for string operations.
 
   This program is written in XSLT 1.0.
 -->

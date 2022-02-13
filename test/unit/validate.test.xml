@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="application/xml" href="unit-test.xsl"?>
+
+<describe title="ut:validate">
+
+ <it title="should return param:string if param:string does not contain characters in param:forbidden">
+  <compute name="ut:validate">
+   <param name="string">abcdefg</param>
+   <param name="forbidden">;</param>
+   <param name="default">hijklmn</param>
+  </compute>
+  <expect>abcdefg</expect>
+ </it>
+
+
+ <it title="should return param:default if param:string contain one of characters in param:forbidden">
+  <compute name="ut:validate">
+   <param name="string">abcdefg</param>
+   <param name="forbidden">imcn</param>
+   <param name="default">hijklmn</param>
+  </compute>
+  <expect>hijklmn</expect>
+ </it>
+
+
+ <it title="should return param:default if param:string contain a character of param:forbidden">
+  <compute name="ut:validate">
+   <param name="string">abcdefg</param>
+   <param name="forbidden">b</param>
+   <param name="default">hijklmn</param>
+  </compute>
+  <expect>hijklmn</expect>
+ </it>
+
+
+ <it title="should return param:string if param:forbidden is empty">
+  <compute name="ut:validate">
+   <param name="string">abcdefg</param>
+   <param name="forbidden"></param>
+   <param name="default">hijklmn</param>
+  </compute>
+  <expect>abcdefg</expect>
+ </it>
+
+
+</describe>

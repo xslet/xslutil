@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="application/xml" href="unit-test.xsl"?>
+
+<describe title="ut:is_absolute_url">
+
+ <it title="should return 'true' if url starts with '/'">
+  <compute name="ut:is_absolute_url">
+   <param name="url">/aaa/bbb/ccc</param>
+  </compute>
+  <expect>true</expect>
+ </it>
+
+
+ <it title="should return 'true' if url starts with 'https://'">
+  <compute name="ut:is_absolute_url">
+   <param name="url">https://aaa/bbb/ccc</param>
+  </compute>
+  <expect>true</expect>
+ </it>
+
+
+ <it title="should return 'true' if url starts with 'file:///'">
+  <compute name="ut:is_absolute_url">
+   <param name="url">file:///aaa/bbb/ccc</param>
+  </compute>
+  <expect>true</expect>
+ </it>
+
+
+ <it title="should return an empty string if url starts with a directory name">
+  <compute name="ut:is_absolute_url">
+   <param name="url">aaa/bbb/ccc</param>
+  </compute>
+  <expect></expect>
+ </it>
+
+
+ <it title="should return an empty string if url is a file name">
+  <compute name="ut:is_absolute_url">
+   <param name="url">ccc.xsl</param>
+  </compute>
+  <expect></expect>
+ </it>
+
+</describe>

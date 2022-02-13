@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="application/xml" href="unit-test.xsl"?>
+
+<describe title="ut:ends_with">
+
+  <it title="should return true if param:string ends with param:suffix (1 char)">
+   <compute name="ut:ends_with">
+    <param name="string">ABC</param>
+    <param name="suffix">C</param>
+   </compute>
+   <expect>true</expect>
+  </it>
+
+
+  <it title="should return true if param:string ends with param:suffix (2 chars)">
+   <compute name="ut:ends_with">
+    <param name="string">ABC</param>
+    <param name="suffix">BC</param>
+   </compute>
+   <expect>true</expect>
+  </it>
+
+
+  <it title="should return an empty string if param:string does not end with param:suffix (1 char)">
+   <compute name="ut:ends_with">
+    <param name="string">ABC</param>
+    <param name="suffix">B</param>
+   </compute>
+   <expect></expect>
+  </it>
+
+
+  <it title="should return an empty string if param:string does not end with param:suffix (2 chars)">
+   <compute name="ut:ends_with">
+    <param name="string">ABC</param>
+    <param name="suffix">BB</param>
+   </compute>
+   <expect></expect>
+  </it>
+
+
+  <it title="should return true if both param:string and param:suffix are empty">
+   <compute name="ut:ends_with">
+    <param name="string"></param>
+    <param name="suffix"></param>
+   </compute>
+   <expect>true</expect>
+  </it>
+
+  <it title="should return true if only param:suffix is empty">
+   <compute name="ut:ends_with">
+    <param name="string">ABC</param>
+    <param name="suffix"></param>
+   </compute>
+   <expect>true</expect>
+  </it>
+
+
+  <it title="should return true if param:suffix is equal to param:string">
+   <compute name="ut:ends_with">
+    <param name="string">ABC</param>
+    <param name="suffix">ABC</param>
+   </compute>
+   <expect>true</expect>
+  </it>
+
+</describe>

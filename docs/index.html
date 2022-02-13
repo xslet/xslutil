@@ -1,44 +1,206 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <title>@xslet/xslutil</title>
-  <style>
-  p { margin-left: 1rem; }
-  </style>
- </head>
- <body>
-  <article>
-   <h1>@xslet/xslutil</h1>
-   <p>This is a set of utilities for XSLT programs on Web browsers.</p>
-   <p>This program is written in XSLT 1.0.</p>
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>xslutil ver1.0</title>
+ <link rel="stylesheet" type="text/css" href="index.css">
+ <link rel="icon" type="image/png" href="./images/xslet-logo.png">
+</head>
+<body>
+ <nav>
+  <ul>
+   <li><a href="#about">About</a></li>
+   <li><a href="#usage">Usage</a></li>
+   <li><a href="./api/xslutil.xml">APIs</a></li>
+   <li><a href="#tests">Tests</a></li>
+   <li><a href="#links">Links</a></li>
+  </ul>
+  <a href="#"><img id="logo" src="./images/xslet-logo.png"></a>
+ </nav>
 
-   <section>
-    <h2>Namespace</h2>
-    <p><code>xmlns:ut="https://github.com/xslet/2020/xslutil"</code></p>
-   </section>
+ <main>
+  <header>
+   <h1>xslutil <span class="version">Ver 1.0</span></h1>
+   <p>
+A XSLT library which is a set of utilities for XSLT programs on Web browsers.
+   </p>
+   <p>
+Copyright (C) xslet project.<br>
+MIT License.
+   </p>
+  </header>
 
-   <section>
-    <h2>API</h2>
-    <p>The API document of xslutil is <a href="api/xslutil.xml">here</a>.</p>
-   </section>
+  <a name="about"></a>
+  <section>
+   <h2>About xslutil</h2>
+   <p>
+xslutil is a XSL library for string operations.
+XSLT1 and XPath1 provides some functions for string operations, but those are not enough.
+This library provides some other functions which are needed in xslet project.
+   </p>
+  </section>
 
-   <section>
-    <h2>Test</h2>
-    <ol>
-     <li><a href="test/count.test.xml">ut:count</a></li>
-     <li><a href="test/ends_with.test.xml">ut:ends_with</a></li>
-     <li><a href="test/get_dir_from_url.test.xml">ut:get_dir_from_url</a></li>
-     <li><a href="test/get_namespace_uri.test.xml">ut:get_namespace_uri</a></li>
-     <li><a href="test/get_xsl_url.test.xml">ut:get_xsl_url</a></li>
-     <li><a href="test/is_absolute_url.test.xml">ut:is_absolute_url</a></li>
-     <li><a href="test/repeat.test.xml">ut:repeat</a></li>
-     <li><a href="test/replace.test.xml">ut:replace</a></li>
-     <li><a href="test/trim.test.xml">ut:trim</a></li>
-     <li><a href="test/validate.test.xml">ut:validate</a></li>
-    </ol>
-   </section>
-  </article>
- </body>
+  <a name="usage"></a>
+  <section>
+   <h2>Usage</h2>
+   <p>
+To import xslutil.xsl into your XSL application or library, the following handworks are needed.
+   </p>
+   <ol>
+    <li>
+     <p>
+Add the namespace declaration of xslutil in a XSL file.
+The namespace of xslutil is "https://github.com/xslet/2020/xslutil".
+     </p>
+     <div class="code">
+<div>&lt;xsl:stylesheet version="1.0"</div>
+<div> &nbsp; xmlns:xsl="http://www.w3.org/1999/XSL/Transform"</div>
+<div> &nbsp; xmlns:ut="https://github.com/xslet/2020/xslutil"&gt; &lt;!-- This! --&gt;</div>
+<div> &nbsp; ...</div>
+     </div>
+    </li>
+    <li>
+     <p>
+Add a import element of xslutil in the XSL file.
+     </p>
+     <div class="code">
+<div> &nbsp; ...</div>
+<div> &nbsp; &lt;xsl:import href="./xslutil.xsl"/&gt;
+<div> &nbsp; ...</div>
+     </div>
+    </li>
+    <li>
+     <p>
+Then, you can use named-templates of xslutil in the XSL file with xsl:call-template.
+     </p>
+     <div class="code">
+<div> &nbsp; ...</div>
+<div> &nbsp; &lt;xsl:call-template name="ut:count"&gt;
+<div> &nbsp; &nbsp; &lt;xsl:with-param name="string" select="..."/&gt;
+<div> &nbsp; &nbsp; &lt;xsl:with-param name="target" select="..."/&gt;
+<div> &nbsp; &lt;/xsl:call-template&gt;
+<div> &nbsp; ...</div>
+     </div>
+    </li>
+   </ol>
+  </section>
+
+  <a name="apis"></a>
+  <section>
+   <h2>APIs</h2>
+   <p>
+The API document of xslutil is generated with xsldoc.<br>
+The generated API document is <a href="./api/xslutil.xml">here</a>.
+   </p>
+  </section>
+
+  <a name="tests"></a>
+  <section>
+   <h2>Tests</h2>
+   <p>
+This section provides the results of unit tests of named-templates written in the API document.
+   </p>
+   <ul>
+    <li>
+<a href="test/unit/count.test.xml">ut:count</a>
+    </li>
+    <li>
+<a href="test/unit/ends_with.test.xml">ut:ends_with</a>
+    </li>
+    <li>
+<a href="test/unit/get_dir_from_url.test.xml">ut:get_dir_from_url</a>
+    </li>
+    <li>
+<a href="test/unit/get_namespace_uri.test.xml">ut:get_namespace_uri</a>
+    </li>
+    <li>
+<a href="test/unit/get_xsl_url.test.xml">ut:get_xsl_url</a>
+    </li>
+    <li>
+<a href="test/unit/is_absolute_url.test.xml">ut:is_absolute_url</a>
+    </li>
+    <li>
+<a href="test/unit/repeat.test.xml">ut:repeat</a>
+    </li>
+    <li>
+<a href="test/unit/replace.test.xml">ut:replace</a>
+    </li>
+    <li>
+<a href="test/unit/trim.test.xml">ut:trim</a>
+    </li>
+    <li>
+<a href="test/unit/trim_end.test.xml">ut:trim_end</a>
+    </li>
+    <li>
+<a href="test/unit/trim_start.test.xml">ut:trim_start</a>
+    </li>
+    <li>
+<a href="test/unit/validate.test.xml">ut:validate</a>
+    </li>
+   </ul>
+  </section>
+
+  <a name="links"></a>
+  <section>
+   <h2>Links</h2>
+   <p>
+xslutil is oe of applications in xslet project.
+xslet is a project to develop Web applications with XSL (XSLT and XPath).
+   </p>
+   <ul>
+    <li>
+<a id="xslutil" href="https://github.com/xslet/xslutil">xslutil repository on GitHub</a>
+    </li>
+    <li>
+<a id="xslet" href="https://github.com/xslet">xslet project on GitHub</a>
+    </li>
+   </ul>
+   <p>
+XSLT and XPath is the specifications specified by W3C.
+xslutil uses XSLT version 1.0 and XPath version 1.0 in it because Web browsers support them.
+   </p>
+   <ul>
+    <li>
+<a id="xslt1" href="https://www.w3.org/TR/1999/REC-xslt-19991116">XSLT 1.0 - W3C Recommendation</a>
+    </li>
+    <li>
+<a id="xpath1" href="https://www.w3.org/TR/1999/REC-xpath-19991116/">XPath 1.0 - W3C Recommendation</a>
+    </li>
+   </ul>
+   <p>
+In addition, xslutil uses XSLT version 3.0 and XPath version 3.0 in the build environment.
+   </p>
+   <ul>
+    <li>
+<a id="xslt3" href="https://www.w3.org/TR/xslt-30/">XSLT 3.0 - W3C Recommendation</a>
+    </li>
+    <li>
+<a id="xpath3" href="https://www.w3.org/TR/xpath-30/">XPath 3.0 - W3C Recommendation</a>
+    </li>
+   </ul>
+   <p>
+The xslutil also uses following application as tools in the build environment.
+   </p>
+   <ul>
+    <li>
+<a id="saxon" href="http://saxon.sourceforge.net/">Saxon for Java - Saxonica</a>
+    </li>
+    <li>
+<a id="ant" href="https://ant.apache.org/">Apache Ant - The Apache Software Foundation</a>
+    </li>
+    <li>
+<a id="tomcat" href="https://tomcat.apache.org/">Apache Tomcat - The Apache Software Foundation</a>
+    </li>
+    <li>
+<a id="sass" href="https://sass-lang.com/">SCSS - the Sass team</a>
+    </li>
+    <li>
+<a id="xsldoc" href="https://github.com/xslet/xsldoc">xsldoc - xslet project</a>
+    </li>
+   </ul>
+  </section>
+
+ </main>
+</body>
 </html>

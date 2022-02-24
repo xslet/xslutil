@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project>
+
+ <property name="dep.saxon.version"  value="11-1J"/>
+ <property name="dep.tomcat.version" value="10.0.16"/>
+
+
+ <import file="./build.directories.xml"/>
+
+ <target name="setup:deps:base">
+  <antcall target="setup:saxon"/>
+  <antcall target="setup:tomcat"/>
+ </target>
+
+
+ <target name="setup:saxon">
+  <property name="pkg" value="SaxonHE${dep.saxon.version}"/>
+  <property name="url" value="https://sourceforge.net/projects/saxon/files/Saxon-HE/11/Java/${pkg}.zip/download"/>
+  <property name="dir" value="${dir.work.lib}/${pkg}"/>
+  <property name="zip" location="${dir.work.dl}/${pkg}.zip"/>
+  <property name="unzip" location="${dir}"/>
+  <get src="${url}" dest="${zip}"/>
+  <unzip src="${zip}" dest="${unzip}"/>
+ </target>
+
+
+ <property name="pkg.tomcat" value="apache-tomcat-${dep.tomcat.version}"/>
+ <property name="dir.tomcat" value="${dir.work.bin}/${pkg.tomcat}"/>
+ <property name="dir.deploy" value="${dir.tomcat}/webapps/${ant.project.name}"/>
+
+ <target name="setup:tomcat">
+  <property name="pkg" value="${pkg.tomcat}"/>
+  <property name="url" value="https://archive.apache.org/dist/tomcat/tomcat-10/v${dep.tomcat.version}/bin/${pkg}.zip"/>
+  <property name="dir" value="${dir.tomcat}"/>
+  <property name="zip" location="${dir.work.dl}/${pkg}.zip"/>
+  <property name="unzip" location="${dir.work.bin}"/>
+  <get src="${url}" dest="${zip}"/>
+  <unzip src="${zip}" dest="${unzip}"/>
+  <chmod perm="ugo+rx" dir="${dir}/bin" includes="**/*.sh"/>
+  <mkdir dir="${dir.deploy}"/>
+ </target>
+
+
+</project>

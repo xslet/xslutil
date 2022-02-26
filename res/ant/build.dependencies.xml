@@ -2,7 +2,7 @@
 
 <project>
 
- <property name="dep.saxon.version"  value="11-1J"/>
+ <property name="dep.saxon.version"  value="11-2J"/>
  <property name="dep.tomcat.version" value="10.0.16"/>
 
 

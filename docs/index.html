@@ -45,45 +45,242 @@ This library provides some other functions which are needed in xslet project.
   <section>
    <h2>Usage</h2>
    <p>
-To import xslutil.xsl into your XSL application or library, the following handworks are needed.
+This section explains how to import xslutil and call its templates in your XSL application or library.
    </p>
-   <ol>
-    <li>
-     <p>
+
+   <section>
+    <h3>Import xslutil</h2>
+    <p>
+To import xslutil.xsl into another XSL file, the following handworks are needed.
+    </p>
+    <ol>
+     <li>
+      <p>
 Add the namespace declaration of xslutil in a XSL file.
 The namespace of xslutil is "https://github.com/xslet/2020/xslutil".
-     </p>
-     <div class="code">
+      </p>
+      <div class="code">
 <div>&lt;xsl:stylesheet version="1.0"</div>
 <div> &nbsp; xmlns:xsl="http://www.w3.org/1999/XSL/Transform"</div>
 <div> &nbsp; xmlns:ut="https://github.com/xslet/2020/xslutil"&gt; &lt;!-- This! --&gt;</div>
 <div> &nbsp; ...</div>
-     </div>
-    </li>
-    <li>
-     <p>
+      </div>
+     </li>
+     <li>
+      <p>
 Add a import element of xslutil in the XSL file.
-     </p>
-     <div class="code">
+      </p>
+      <div class="code">
 <div> &nbsp; ...</div>
 <div> &nbsp; &lt;xsl:import href="./xslutil.xsl"/&gt;
 <div> &nbsp; ...</div>
-     </div>
-    </li>
-    <li>
+      </div>
+     </li>
+    </ol>
+   </section>
+
+   <section>
+    <h3>Call templates</h3>
+    <p>
+xslutil provides the following named-templates:
+    </p>
+    <ul>
+     <li><a href="#usage_count">ut:count</a></li>
+     <li><a href="#usage_ends_with">ut:ends_with</a></li>
+     <li><a href="#usage_get_dir_from_url">ut:get_dir_from_url</a></li>
+     <li><a href="#usage_get_namespace_url">ut:get_namespace_url</a></li>
+     <li><a href="#usage_get_xsl_url">ut:get_xsl_url</a></li>
+     <li><a href="#usage_is_absolute_url">ut:is_absolute_url</a></li>
+     <li><a href="#usage_repeat">ut:repeat</a></li>
+     <li><a href="#usage_replace">ut:replace</a></li>
+     <li><a href="#usage_trim">ut:trim</a></li>
+     <li><a href="#usage_trim_start">ut:trim_start</a></li>
+     <li><a href="#usage_trim_end">ut:trim_end</a></li>
+     <li><a href="#usage_validate">ut:validate</a></li>
+    </ul>
+
+    <section class="call">
+     <a name="usage_count"></a>
+     <h4>ut:count</h4>
      <p>
-Then, you can use named-templates of xslutil in the XSL file with xsl:call-template.
+Counts a target substring in a string. This function returns a positive number or zero.
      </p>
      <div class="code">
-<div> &nbsp; ...</div>
-<div> &nbsp; &lt;xsl:call-template name="ut:count"&gt;
-<div> &nbsp; &nbsp; &lt;xsl:with-param name="string" select="..."/&gt;
-<div> &nbsp; &nbsp; &lt;xsl:with-param name="target" select="..."/&gt;
-<div> &nbsp; &lt;/xsl:call-template&gt;
-<div> &nbsp; ...</div>
+<div> &lt;!-- Counts 'AB' in 'ABAAABCA' then return 2 --&gt;</div>
+<div> &lt;xsl:call-template name="ut:count"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="string"&gt;ABAABCA&lt;/xsl:with-param&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="target"&gt;AB&lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
      </div>
-    </li>
-   </ol>
+
+     <a name="usage_ends_with"></a>
+     <h4>ut:ends_with</h4>
+     <p>
+Tests that a string ends with a suffix substring. This function returns <code>$ut:true</code> (=<code>'true'</code>) or empty.
+     </p>
+     <div class="code">
+<div> &lt;!-- Tests that 'ABC' ends with 'BC' then return 'true' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:ends_with"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="string"&gt;ABC&lt;/xsl:with-param&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="suffix"&gt;BC&lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+     </div>
+
+     <h4 id="usage_get_dir_from_url">ut:get_dir_from_url</h4>
+     <p>
+Returns a parent url of url. This function returns a url string or <code>'.'</code>.
+     </p>
+     <div class="code">
+<div> &lt;!-- Returns 'https://domain/dir/' from 'https://domain/dir/file' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:get_dir_from_url"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="url"&gt;https://domain/dir/file&lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+     </div>
+
+     <h4 id="usage_get_namespace_url">ut:get_namespace_url</h4>
+     <p>
+Returns the namespace URI of prefix. This function returns a URI string, or <code>$ut:unknown_namespace</code>.
+     </p>
+     <div class="code">
+<div> &lt;!-- Returns 'https://github.com/xslet/2020/xslutil' which is the namespace URI of the prefix 'ut'. --&gt;</div>
+<div> &lt;xsl:call-template name="ut:get_namespace_uri"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="prefix"&gt;ut&lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+     </div>
+     <p>
+<i><b>NOTE:</b> Firefox does not support the XPath's namespace axis: <code>`namespace::*`</code>. So, on Firefox, this function finds an element using the target namespace then applys <code>`namespace-uri()`</code> to it. If such an element is not found, this function returns <code>`$ut:unknown_namespace`</code>.</i>
+     </p>
+
+     <h4 id="usage_get_xsl_url">ut:get_xsl_url</h4>
+     <p>
+Returns the XSL URL from the processing instruction or the specified <i>pi</i>.
+     </p>
+     <div class="code">
+<div> &lt;?xml version="1.0" encoding="utf-8"?&gt;</div>
+<div> &lt;?xml-styesheet type="application/xml" href="https://domain/path/to/file.xsl"?&gt;</div>
+<div> ...</div>
+<div> &lt;!-- Returns 'https://domain/path/to/file.xsl' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:get_xsl_url"/&gt;</div>
+<div>&nbsp;</div>
+<div> &lt;!-- Returns 'path/to/file.xsl' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:get_xsl_url"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="pi" select='&lt;?xml-stylesheet type="text/xsl" href="path/to/file.xsl"?&gt;'/&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+     </div>
+
+     <h4 id="usage_is_absolute_url">ut:is_absolute_url</h4>
+     <p>
+Tests that a url string is an absolute URL. This function returns <code>$ut:true</code> (= <code>'true'</code>) or empty.
+     </p>
+     <div class="code">
+<div> &lt;!-- Tests if 'https://aaa/bbb/ccc' is absolute, then returns 'true' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:is_absolute_url"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="url"&gt;https://aaa/bbb/ccc&lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+<div>&nbsp;</div>
+<div> &lt;!-- Tests if 'aaa/bbb/ccc' is absolute, then returns empty --&gt;</div>
+<div> &lt;xsl:call-template name="ut:is_absolute_url"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="url"&gt;aaa/bbb/ccc&lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+     </div>
+
+     <h4 id="usage_repeat">ut:repeat</h4>
+     <p>
+Repeats <i>string</i> <i>count</i> times.
+     </p>
+     <div class="code">
+<div> &lt;!-- Returns 'ABCABCABC' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:repeat"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="string"&gt;ABC&lt;/xsl:with-param&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="count"&gt;3&lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+     </div>
+
+     <h4 id="usage_replace">ut:replace</h4>
+     <p>
+Replaces all <i>target</i> substrings to <i>replacement</i> in <i>string</i>.
+     </p>
+     <div class="code">
+<div> &lt;!-- Returns 'AdeAde' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:replace"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="string"&gt;ABCABC&lt;/xsl:with-param&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="target"&gt;BC&lt;/xsl:with-param&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="target"&gt;de&lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+     </div>
+
+     <h4 id="usage_trim">ut:trim</h4>
+     <p>
+Trims <i>target</i> substrings in both side of <i>string</i>.
+     </p>
+     <div class="code">
+<div> &lt;!-- Returns 'ABC' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:trim"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="string"&gt;  ABC   &lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+<div>&nbsp;</div>
+<div> &lt;!-- Returns ' ABC ' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:trim"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="string"&gt;## ABC ###&lt;/xsl:with-param&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="target"&gt;#&lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+     </div>
+
+     <h4 id="usage_trim_start">ut:trim_start</h4>
+     <p>
+Trims <i>target</i> substrings in start of <i>string</i>.
+     </p>
+     <div class="code">
+<div> &lt;!-- Returns 'ABC   ' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:trim_start"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="string"&gt;  ABC   &lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+<div>&nbsp;</div>
+<div> &lt;!-- Returns ' ABC ###' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:trim_start"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="string"&gt;## ABC ###&lt;/xsl:with-param&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="target"&gt;#&lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+     </div>
+
+     <h4 id="usage_trim_end">ut:trim_end</h4>
+     <p>
+Trims <i>target</i> substrings in end of <i>string</i>.
+     </p>
+     <div class="code">
+<div> &lt;!-- Returns '  ABC' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:trim_end"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="string"&gt;  ABC   &lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+<div>&nbsp;</div>
+<div> &lt;!-- Returns '## ABC ' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:trim_end"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="string"&gt;## ABC ###&lt;/xsl:with-param&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="target"&gt;#&lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+     </div>
+
+     <h4 id="usage_validate">ut:validate</h4>
+     <p>
+Tests <i>string</i> contains one of character in <i>forbidden</i>. If <i>forbidden</i> substrings are contained, this function returns a <i>default</i> string. Otherwise this function returns the tested <i>string</i>.
+     </p>
+     <div class="code">
+<div> &lt;!-- Returns 'def' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:validate"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="string"&gt;abc&lt;/xsl:with-param&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="forbidden"&gt;c&lt;/xsl:with-param&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="default"&gt;def&lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+<div>&nbsp;</div>
+<div> &lt;!-- Returns 'abc' --&gt;</div>
+<div> &lt;xsl:call-template name="ut:validate"&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="string"&gt;abc&lt;/xsl:with-param&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="forbidden"&gt;z&lt;/xsl:with-param&gt;</div>
+<div> &nbsp; &lt;xsl:with-param name="default"&gt;def&lt;/xsl:with-param&gt;</div>
+<div> &lt;/xsl:call-template&gt;</div>
+     </div>
+    </section>
+   </section>
   </section>
 
   <a name="apis"></a>

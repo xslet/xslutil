@@ -148,22 +148,33 @@
 
  <target name="deploy"
    description="Deploy distributable files and test files to Tomcat.">
+  <antcall target="deploy:xsl:imported"/>
   <copy todir="${dir.docs.test}">
    <fileset dir="${dir.test}"/>
   </copy>
-  <copy todir="${dir.docs}/api/xsldoc">
-   <fileset dir="${dir.dist}"/>
-  </copy>
-  <copy todir="${dir.docs}/api/xsldoc" flatten="true">
-   <fileset dir="${dir.work.xsl}">
-    <include name="xsldoc-*/dist/*"/>
-   </fileset>
-  </copy>
-  <copy todir="${dir.docs}/test/unit">
+  <copy todir="${dir.docs.test}/unit">
    <fileset dir="${dir.res.doc}"/>
   </copy>
+  <copy todir="${dir.docs.api}/xsldoc">
+   <fileset dir="${dir.dist}"/>
+  </copy>
+  <antcall target="deploy:xsldoc"/>
   <copy todir="${dir.deploy}">
    <fileset dir="${dir.docs}"/>
+  </copy>
+ </target>
+
+ <target name="deploy:xsldoc" unless="is_xsldoc">
+  <copy todir="${dir.docs.api}/xsldoc">
+   <fileset dir="${dir.xsldoc}/dist"/>
+  </copy>
+ </target>
+
+ <target name="deploy:xsl:imported" unless="is_application">
+  <copy todir="${dir.test.unit}" flatten="true">
+   <fileset dir="${dir.work.xsl}">
+    <include name="*/dist/*.xsl"/>
+   </fileset>
   </copy>
  </target>
 

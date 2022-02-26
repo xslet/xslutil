@@ -155,9 +155,6 @@
   <copy todir="${dir.docs.test}/unit">
    <fileset dir="${dir.res.doc}"/>
   </copy>
-  <copy todir="${dir.docs.api}/xsldoc">
-   <fileset dir="${dir.dist}"/>
-  </copy>
   <antcall target="deploy:xsldoc"/>
   <copy todir="${dir.deploy}">
    <fileset dir="${dir.docs}"/>
@@ -171,6 +168,11 @@
  </target>
 
  <target name="deploy:xsl:imported" unless="is_application">
+  <copy todir="${dir.docs.api}/xsldoc" flatten="true">
+   <fileset dir="${dir.work.xsl}">
+    <include name="*/dist/*.xsl"/>
+   </fileset>
+  </copy>
   <copy todir="${dir.test.unit}" flatten="true">
    <fileset dir="${dir.work.xsl}">
     <include name="*/dist/*.xsl"/>

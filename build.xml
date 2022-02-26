@@ -12,19 +12,6 @@
 
  <!-- Dependencies for this project -->
  <target name="setup:deps" depends="setup:deps:base">
-  <antcall target="setup:xsldoc"/>
- </target>
-
- <property name="dep.xsldoc.version" value="1.0.0"/>
-
- <target name="setup:xsldoc">
-  <property name="pkg" value="xsldoc-${dep.xsldoc.version}"/>
-  <property name="dir" value="${dir.work.xsl}/${pkg}"/>
-  <property name="url" value="https://github.com/xslet/xsldoc/archive/${dep.xsldoc.version}.zip"/>
-  <property name="zip" location="${dir.work.dl}/${pkg}.zip"/>
-  <property name="unzip" location="${dir}/.."/>
-  <get src="${url}" dest="${zip}"/>
-  <unzip src="${zip}" dest="${unzip}"/>
  </target>
 
 

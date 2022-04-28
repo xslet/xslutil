@@ -129,14 +129,14 @@
      </xsl:merge-action>
     </xsl:merge>
 
-    <xsx:template match="/describe">
+    <xsx:template match="/*">
      <xsx:variable name="_data_url" select="@data-src" />
      <html>
      <head>
       <meta charset="utf-8" />
       <title><xsx:value-of select="@title" /></title>
-      <link rel="stylesheet" href="./unit-test.css" />
-      <script src="./unit-test.js"></script>
+      <link rel="stylesheet" href="../res/test/unit-test.css" />
+      <script src="../res/test/unit-test.js"></script>
      </head>
      <body>
       <div id="passFailBar"/>
@@ -237,6 +237,7 @@
       <div class="code computed"><xsx:value-of select="$computed" /></div>
      </div>
     </xsx:template>
+    <xsx:template match="compute/param"/>
    </xsx:stylesheet>
   </xsl:result-document>
  </xsl:template>

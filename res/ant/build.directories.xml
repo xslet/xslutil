@@ -22,6 +22,9 @@
  <property name="dir.src.xsl.ext" value="${dir.src.xsl}/ext"/>
 
  <property name="dir.test.unit" value="${dir.test}/unit"/>
+ <property name="dir.test.res"  value="${dir.test}/res"/>
+ <property name="dir.test.res.test" value="${dir.test.res}/test"/>
+ <property name="dir.test.res.dist" value="${dir.test.res}/dist"/>
 
  <property name="dir.docs.test" value="${dir.docs}/test"/>
  <property name="dir.docs.api"  value="${dir.docs}/api"/>
@@ -38,6 +41,8 @@
   <mkdir dir="${dir.src.scss}"/>
   <mkdir dir="${dir.src.js}"/>
   <mkdir dir="${dir.test.unit}"/>
+  <mkdir dir="${dir.test.res.test}"/>
+  <mkdir dir="${dir.test.res.dist}"/>
   <mkdir dir="${dir.docs.test}"/>
   <mkdir dir="${dir.docs.api}"/>
   <mkdir dir="${dir.dist}"/>
